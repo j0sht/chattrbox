@@ -4,6 +4,7 @@ var extract = require('./extract');
 
 var handleError = function(err, res) {
     res.writeHead(404);
+    res.write('<h1>404 - Not found</h1>');
     res.end();
 };
 
