@@ -16,6 +16,9 @@ class ChatApp {
 	socket.registerMessageHandler((data) => {
 	    console.log(data);
 	});
+	socket.registerCloseHandler(() => {
+	    console.log("connection closed");
+	});
     }
 }
 

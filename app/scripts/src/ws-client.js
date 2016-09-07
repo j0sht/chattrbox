@@ -24,6 +24,12 @@ function registerMessageHandler(handlerFunction) {
     };
 }
 
+function registerCloseHandler(handlerFunction) {
+    socket.onclose = () => {
+	handlerFunction();
+    };
+}
+
 function sendMessage(payload) {
     socket.send(JSON.stringify(payload));
 }
@@ -32,5 +38,6 @@ export default {
     init, // same as init: init
     registerOpenHandler,
     registerMessageHandler,
+    registerCloseHandler,
     sendMessage
 }
