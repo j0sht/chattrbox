@@ -5,11 +5,12 @@ var ws = new WebSocketServer({
     port: port
 });
 var messages = [];
+var repeatCount = 2;
 console.log('websockets server started');
 
 ws.on('connection', function(socket) {
     console.log('client connection established.');
-
+    
     messages.forEach(function(msg) {
 	socket.send(msg);
     });
@@ -20,7 +21,9 @@ ws.on('connection', function(socket) {
 	// ws object keeps track of all connections
 	// via the clients array
 	ws.clients.forEach(function(clientSocket) {
-	    clientSocket.send(data);
+	    for (var i = 0; i < repeatCount; i++) 
+		clientSocket.send(data);
 	});
+	repeatCount++;
     });
 });
