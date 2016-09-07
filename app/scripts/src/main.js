@@ -2,5 +2,5 @@
   main module
     initializes application
 */
-import ChatApp from './app';
-new ChatApp();
+import ApplicationForChatting from './app';
+new ApplicationForChatting();
