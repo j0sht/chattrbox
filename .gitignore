@@ -9,3 +9,5 @@ node_modules
 # temporary files
 *.tmp
 *~
+
+app/scripts/dist/
