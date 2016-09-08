@@ -5,14 +5,19 @@
 */
 
 import socket from './ws-client';
+import {UserStore} from './storage';
 import {ChatForm, ChatList, promptForUsername} from './dom'; // named import
 
 const FORM_SELECTOR = '[data-chat="chat-form"]';
 const INPUT_SELECTOR = '[data-chat="message-input"]';
 const LIST_SELECTOR = '[data-chat="message-list"]';
 
-let username = '';
-username = promptForUsername();
+let userStore = new UserStore('x-chattrbox/u');
+let username = userStore.get();
+if (!username) {
+    username = promptForUsername();
+    userStore.set(username);
+}
 
 class ChatApp {
     constructor() { // run any time a new instance of class is created
